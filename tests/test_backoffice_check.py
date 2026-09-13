@@ -26,7 +26,6 @@ def test_backoffice_check_includes_lower_date_boundary(monkeypatch):
     date_range = next(
         clause["range"]["data.acquisition_source.datetime"]
         for clause in query["bool"]["must"]
-        if "range" in clause
-        and "data.acquisition_source.datetime" in clause["range"]
+        if "range" in clause and "data.acquisition_source.datetime" in clause["range"]
     )
-    assert date_range["gte"] == date(2025, 1, 3)
+    assert date_range == {"gte": date(2025, 1, 3), "lte": date(2025, 1, 6)}

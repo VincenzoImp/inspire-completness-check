@@ -170,11 +170,8 @@ def prepare_message(
     missing_article_info = (
         f"""
 :exclamation: Missing records for the following eprints:
-{
-            NEW_LINE_SYMBOL.join(
-                ["* " + emprint_number for emprint_number in missing_articles]
-            )
-        }"""
+{NEW_LINE_SYMBOL.join(
+    ['* ' + emprint_number for emprint_number in missing_articles])}"""
         if missing_articles
         else "All eprints are on INSPIRE! :confetti:"
     )
